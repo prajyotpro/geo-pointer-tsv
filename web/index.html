@@ -1,0 +1,64 @@
+<html>
+    <header>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/master.css">
+    </header>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form>
+                        <div class="form-group">
+                            <label>Radius:</label>
+                            <input type="textbox" class="form-control" id="radius">
+                        </div>
+                        <div class="form-group">
+                            <label>Longitude:</label>
+                            <input type="textbox" class="form-control" id="latitude">
+                        </div>
+                        <div class="form-group">
+                            <label>Latitude:</label>
+                            <input type="textbox" class="form-control" id="longitude">
+                        </div>
+                        <button type="button" onclick="search()" class="btn btn-default">Search</button>
+                        <span id="error-msg" class="error">All form values should be type integer or decimal.</span>
+                    </form>
+                </div>
+                <div class="col">
+                    <div id="target" class="table-responsive">Loading...</div>
+                    <script id="template" type="x-tmpl-mustache">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Coordinates</th>
+                                    <th>Distance (KM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#points}}
+                                <tr>
+                                    <td>{{type}}</td>
+                                    <td>{{coordinates.latitude}}, {{coordinates.longitude}}</td>
+                                    <td>{{distance}}</td>
+                                </tr>
+                                {{/points}}
+                            </tbody>
+                        </table>
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div id="map_switch" class="map"></div>  
+        </div>
+    </body>
+    <footer>
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM1OoF9jPvHKzd_-N8-tSqVx48EnCrEeA"></script>
+    <script src="/assets/js/mustache.min.js"></script>
+    <script src="/assets/js/master.js"></script>
+</html>
