@@ -2,7 +2,7 @@
 The project focuses on finding closest points from given TSV file.</br>
 User is allowed to enter radius, latitude, longitude.</br>
 Input latitude & longitude will be the center point from which points from given TSV file will be plotted on map based on radius(in KM).</br>
-Converts TSV into JSON when server starts.
+Creates JSON from TSV when server starts.
 
 
 /api/v1/search/?radius=5&latitude=43.50&longitude=28.50
