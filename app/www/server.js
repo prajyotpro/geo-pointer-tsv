@@ -62,15 +62,7 @@ if (!sticky.listen(server, port)) {
     app.use(multipart({
         uploadDir: config.tmp
     }));
-    app.use('/', express.static('/home/prajyot/mywork/geo-pointer-tsv/web/'));
-
-
-    // == WEB ==
-    // app.get('/', function(req, res) {
-    //     res.sendFile('/home/prajyot/mywork/geo-pointer-tsv/web/index.html');
-    // });
-
-    
+    app.use('/', express.static(path.resolve('web') + "/"));    
     
 
 
@@ -78,15 +70,6 @@ if (!sticky.listen(server, port)) {
     // API V1.0 Routes
     app.use(config.SERVER.API_PATH + 'v1/search', searchRouter);
     
-    
-
-    // ========================================== SOCKET ==========================================
-    var chat = io
-        .of('/chat')
-        .on('connection', function (socket) {
-            console.log('Socket connected.');
-            chat.emit('connected', { success: true });
-        });
 
     // const used = process.memoryUsage();
     // for (let key in used) {
