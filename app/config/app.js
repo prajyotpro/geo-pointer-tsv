@@ -26,6 +26,7 @@ Config.loadServerConfig = function () {
     Config.prototype.INACTIVE               = 0;
     Config.prototype.ACTIVE                 = 1;
     Config.prototype.DISABLED               = 2;
+    Config.prototype.DEFAULT_RADIUS         = 5;
 }
 
 Config.prototype.CODES = statusCodes;

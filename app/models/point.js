@@ -1,3 +1,4 @@
+const Config 		= require('../config/app');
 const async 		= require('async');
 const haversine 	= require('haversine');
 
@@ -23,7 +24,7 @@ Point.prototype.findInPointByRadius = function(data, callback) {
         return callback("Please enter longitude", null);
     }
 
-    var radius      = isNaN(data.radius) || data.radius.trim() == '' ? 5 : data.radius;
+    var radius      = isNaN(data.radius) || data.radius.trim() == '' ? Config.DEFAULT_RADIUS : data.radius;
     delete data.radius;
 
     var foundPoints = [];
