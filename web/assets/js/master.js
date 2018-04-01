@@ -1,4 +1,4 @@
-const API_HOST = window.location.href +"/api/v1/search/";
+const API_HOST = window.location.href +"api/v1/search/";
 
 $("#error-msg").hide();
 
@@ -15,7 +15,7 @@ var search = function() {
 
     $("#error-msg").hide();
 
-    $.get( API_HOST + "/?radius="+radius+"&latitude="+latitude+"&longitude="+longitude, 
+    $.get( API_HOST + "?radius="+radius+"&latitude="+latitude+"&longitude="+longitude, 
         function( data ) {
             console.log(data);
             if(data.data != undefined && data.data.length > 0) {
