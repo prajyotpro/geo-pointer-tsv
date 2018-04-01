@@ -1,4 +1,4 @@
-const API_HOST = "http://"+ window.location.host +"/api/v1/search/";
+const API_HOST = window.location.href +"/api/v1/search/";
 
 $("#error-msg").hide();
 
