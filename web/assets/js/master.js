@@ -18,10 +18,11 @@ var search = function() {
     $.get( API_HOST + "?radius="+radius+"&latitude="+latitude+"&longitude="+longitude, 
         function( data ) {
             console.log(data);
-            if(data.data != undefined && data.data.length > 0) {
+            if(data.data.found != undefined && data.data.found.length > 0) {
 
-                fillFoundTable(data.data);
-                plotCoordinates(data.data, {lat: latitude, lng: longitude});
+                fillFoundTable(data.data.stats);
+                drawChat(data.data.stats);
+                plotCoordinates(data.data.found, {lat: latitude, lng: longitude});
             }
     });
 }
@@ -73,3 +74,41 @@ var fillFoundTable = function(data) {
     var rendered = Mustache.render(template, {"points": data});
     $('#target').html(rendered);
 };
+
+
+var drawChat = function(stats) { 
+
+    var actualSet = [];
+    var foundSet  = [];
+    _.each(stats, function(value) {
+        actualSet.push(value.actual);
+        foundSet.push(value.found);
+    });
+
+    new Chart(document.getElementById("bar-chart-grouped"), {
+        type: 'bar',
+        data: {
+            labels: _.pluck(stats, 'key'),
+            datasets: [
+                {
+                label: "Actual",
+                backgroundColor: "#3e95cd",
+                data: actualSet
+                }, {
+                label: "Found",
+                backgroundColor: "#8e5ea2",
+                data: foundSet
+                }
+            ]
+        },
+        options: { 
+            responsive: false,
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                text: 'Found Points'
+            }
+        }
+    });
+};
+

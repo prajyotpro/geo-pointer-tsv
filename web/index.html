@@ -31,21 +31,24 @@
                             <thead>
                                 <tr>
                                     <th>Type</th>
-                                    <th>Coordinates</th>
-                                    <th>Distance (KM)</th>
+                                    <th>Actual</th>
+                                    <th>Found</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {{#points}}
                                 <tr>
-                                    <td>{{type}}</td>
-                                    <td>{{coordinates.latitude}}, {{coordinates.longitude}}</td>
-                                    <td>{{distance}}</td>
+                                    <td>{{key}}</td>
+                                    <td>{{actual}}</td>
+                                    <td>{{found}}</td>
                                 </tr>
                                 {{/points}}
                             </tbody>
                         </table>
                     </script>
+                </div>
+                <div class="col">
+                    <canvas id="bar-chart-grouped" width="400" height="400"></canvas>
                 </div>
             </div>
         </div>
@@ -59,6 +62,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM1OoF9jPvHKzd_-N8-tSqVx48EnCrEeA"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="/assets/js/mustache.min.js"></script>
     <script src="/assets/js/master.js"></script>
 </html>

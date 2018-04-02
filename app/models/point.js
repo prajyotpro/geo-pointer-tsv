@@ -1,6 +1,7 @@
 const Config 		= require('../config/app');
 const async 		= require('async');
 const haversine 	= require('haversine');
+const _ 	        = require('underscore');
 
 const pointData		= require('../assets/data');
 
@@ -59,7 +60,30 @@ Point.prototype.findInPointByRadius = function(data, callback) {
         if(error) {
             return callback(error, null);
         } else {
-            return callback(null, foundPoints);
+
+            var typeCount = _.countBy(foundPoints, function(num) {
+                return num.type;
+            });
+
+            var totalPoints = _.countBy(pointData, function(num) {
+                return num[0];
+            });
+
+            var stats = [];
+            for(var key in totalPoints) {
+                stats.push( {
+                    key   : key,
+                    actual: totalPoints[key],
+                    found : typeCount[key] == undefined ? 0 : typeCount[key]
+                } );
+            }
+
+            let result = {
+                stats: stats, 
+                found: foundPoints
+            }
+
+            return callback(null, result);
         }   
     });
 };
